@@ -1,4 +1,5 @@
 import pygame
+import constants
 
 class Character():
     def __init__(self, x, y):
