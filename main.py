@@ -18,6 +18,21 @@ player = Character(100, 100)
 run = True
 while run:
 
+    screen.fill(constants.BG)
+    dx = 0
+    dy = 0
+    if moving_right == True:
+        dx = 5
+    if moving_left == True:
+        dx = -5
+    if moving_down == True:
+        dy = 5
+    if moving_up == True:
+        dy = -5
+
+    player.move(dx, dy)
+    print(str(dx), str(dy))
+
     player.draw(screen)
 
     for event in pygame.event.get():
@@ -25,13 +40,13 @@ while run:
             run = False
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_a:
-                print("left")
+                moving_left = True
             if event.key == pygame.K_d:
-                print("right")
+                moving_right = True
             if event.key == pygame.K_w:
-                print("up")
+                moving_up = True
             if event.key == pygame.K_s:
-                print("down")
+                moving_down = True
     
     pygame.display.update()
 
