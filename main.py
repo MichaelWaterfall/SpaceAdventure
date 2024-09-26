@@ -14,10 +14,16 @@ moving_right = False
 moving_down = False
 moving_up = False
 
+def scale_img(image, scale):
+    w = image.get_width()
+    h = image.get_height()
+    return pygame.transform.scale(image, (w * scale, h * scale))
+
 player_image = pygame.image.load("not added yet").convert_alpha()
+player_image = scale_img(player_image, constants.SCALE)
 
 #player creation
-player = Character(100, 100)
+player = Character(100, 100, player_image)
 
 run = True
 while run:

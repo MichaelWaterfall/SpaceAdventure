@@ -3,7 +3,9 @@ import constants
 import math
 
 class Character():
-    def __init__(self, x, y):
+    def __init__(self, x, y, image):
+        self.flip = False
+        self.image = image
         self.rect = pygame.Rect(0, 0, 40, 40)
         self.rect.center = (x, y)
 
@@ -16,4 +18,6 @@ class Character():
         self.rect.y += dy
 
     def draw(self, surface):
-        pygame.draw.rect(surface, (255, 0, 0), self.rect)
+        flipped_image = pygame.transform.flip(self.image, False, False)
+        surface.blit(flipped_image, self.rect)
+        pygame.draw.rect(surface, constants.RED, self.rect, 1)
