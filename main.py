@@ -22,8 +22,14 @@ def scale_img(image, scale):
 player_image = pygame.image.load("not added yet").convert_alpha()
 player_image = scale_img(player_image, constants.SCALE)
 
+animation_list = []
+for i in range(4):
+    img = pygame.image.load(f"{i}").convert_alpha()
+    img = scale_img(img, constants.SCALE)
+    animation_list.append(img)
+
 #player creation
-player = Character(100, 100, player_image)
+player = Character(100, 100, animation_list)
 
 run = True
 while run:
