@@ -22,19 +22,24 @@ def scale_img(image, scale):
 player_image = pygame.image.load("not added yet").convert_alpha()
 player_image = scale_img(player_image, constants.SCALE)
 
-animation_types = ["idle", "run"]
-animation_list = []
+mob_animations = []
+mob_types = []
 
-for animation in animation_types:
-    temp_list = []
-    for i in range(4):
-        img = pygame.image.load(f"{animation_types}{i}").convert_alpha()
-        img = scale_img(img, constants.SCALE)
-        temp_list.append(img)
-    animation_list.append(img)
+animation_types = ["idle", "run"]
+for mob in mob_types:
+    animation_list = []
+
+    for animation in animation_types:
+        temp_list = []
+        for i in range(4):
+            img = pygame.image.load(f"assets/images/characters/{mob}/{animation_types}/{i}.png").convert_alpha()
+            img = scale_img(img, constants.SCALE)
+            temp_list.append(img)
+        animation_list.append(img)
+    mob_animations.append(animation_list)
 
 #player creation
-player = Character(100, 100, animation_list)
+player = Character(100, 100, mob_animations)
 
 run = True
 while run:
